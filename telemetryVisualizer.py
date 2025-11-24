@@ -11,7 +11,7 @@ from datetime import datetime
 
 # data = []
 thrust_values = []
-date_values = []
+microsecond_values = []
 
 with open('spacecraft_thruster.csv', mode='r') as f:
     data = csv.reader(f)
@@ -25,23 +25,22 @@ with open('spacecraft_thruster.csv', mode='r') as f:
         #########
         #########
         #########
-        # i want to access just the second count for the x axis of the graph
+        # i want to access just the microsecond count for the x axis of the graph
         date_obj = datetime.strptime(entry[0], '%Y-%m-%d %H:%M:%S.%f')
-        date_values.append(date_obj[4])
+        # print('\nobj:',date_obj)
+        microsecond_count = date_obj.microsecond    
+        microsecond_values.append(microsecond_count)
         ##########
         #########
         #########
 
 
-
-print("\ndates:", date_values[:10])
-
-print("\nthrust:", thrust_values[:10])
+# print("\nthrust:", thrust_values[:10])
 
 # # plot the thrust values
-# plt.plot(thrust_values[:10])
-# plt.xlabel('Time')
-# plt.ylabel('Thrust')
-# plt.title('Aircraft Thrust')
-# plt.grid(True)
-# plt.show()
+plt.plot(thrust_values[:10], microsecond_values[:10])
+plt.xlabel('Time')
+plt.ylabel('Thrust')
+plt.title('Aircraft Thrust')
+plt.grid(True)
+plt.show()
