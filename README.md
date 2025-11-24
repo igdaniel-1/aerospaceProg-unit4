@@ -4,7 +4,7 @@ Some of these files have dependencies that require installation before compilati
 I created these files to be run in a virtual environment to get around the pip3 "externally-managed-environment" error.
 You can run them the same way I did by following these steps.
 
-Current additional dependencies vary by file, but within this repo include: astropy.
+Current additional dependencies vary by file, but within this repo include: astropy, matplotlib, scipy.
 
 
 1. Set up the virtual environment. Within your project directory, open terminal and enter:
@@ -17,7 +17,7 @@ Current additional dependencies vary by file, but within this repo include: astr
 
 3. Install the dependency in the new virtual environment
 
-```pip3 install astropy```
+```pip3 install <astropy/dependency name>```
 
 4. Check your install
 
