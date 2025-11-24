@@ -15,10 +15,12 @@ microsecond_values = []
 
 with open('spacecraft_thruster.csv', mode='r') as f:
     data = csv.reader(f)
+    next(data)  # Skip header row if present
 
     for entry in data:
-        if entry[2] == 'thrust':
-            continue
+        # previous implementation of "skip header"
+        # if entry[2] == 'thrust':
+        #     continue
         thrust_values.append(entry[2])
 
         # i want to access just the microsecond count to be used for the x axis of the graph
@@ -31,9 +33,9 @@ with open('spacecraft_thruster.csv', mode='r') as f:
 
 # # plot the thrust values
 # limited test plot (10 values)
-plt.plot(thrust_values[:10], microsecond_values[:10])
+plt.plot(microsecond_values[:10],thrust_values[:10])
 # full plot of thrust data
-# plt.plot(thrust_values, microsecond_values)
+# plt.plot(microsecond_values,thrust_values)
 plt.xlabel('Time')
 plt.ylabel('Thrust')
 plt.title('Aircraft Thrust')
