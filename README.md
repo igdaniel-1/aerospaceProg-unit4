@@ -15,7 +15,7 @@ Current additional dependencies vary by file, but within this repo include: astr
 
 ```source <your_project_name>/bin/activate ```
 
-3. Install pandas in the new virtual environment
+3. Install the dependency in the new virtual environment
 
 ```pip3 install astropy```
 
