@@ -21,24 +21,19 @@ with open('spacecraft_thruster.csv', mode='r') as f:
             continue
         thrust_values.append(entry[2])
 
-
-        #########
-        #########
-        #########
-        # i want to access just the microsecond count for the x axis of the graph
+        # i want to access just the microsecond count to be used for the x axis of the graph
         date_obj = datetime.strptime(entry[0], '%Y-%m-%d %H:%M:%S.%f')
-        # print('\nobj:',date_obj)
         microsecond_count = date_obj.microsecond    
         microsecond_values.append(microsecond_count)
-        ##########
-        #########
-        #########
 
 
 # print("\nthrust:", thrust_values[:10])
 
 # # plot the thrust values
+# limited test plot (10 values)
 plt.plot(thrust_values[:10], microsecond_values[:10])
+# full plot of thrust data
+# plt.plot(thrust_values, microsecond_values)
 plt.xlabel('Time')
 plt.ylabel('Thrust')
 plt.title('Aircraft Thrust')
