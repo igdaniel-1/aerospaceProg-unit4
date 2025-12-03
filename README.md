@@ -15,7 +15,11 @@ Current additional dependencies vary by file, but within this repo include: astr
 
 ```source <your_project_name>/bin/activate ```
 
-3. Install the dependency in the new virtual environment
+3. Install the dependency in the new virtual environment, (for pde = 'pip install py-pde')
+for py-pde, prereqs include: numba, sympy, and tqdm
+<!-- issue with numba install preventing py-pde install -->
+<!-- RuntimeError: Cannot install on Python version 3.14.0; only versions >=3.10,<3.14 are supported. -->
+<!-- may need to degrade python in the virtual environment to run numba dependency for py-pde -->
 
 ```pip3 install <astropy/dependency name>```
 
