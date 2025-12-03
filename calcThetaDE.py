@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 # physical constants
 g = 9.8
@@ -25,10 +26,32 @@ def theta(t):
 
         theta += theta_dot * delta_t
         theta_dot += theta_double_dot * delta_t
+        # print("theta:", theta)
+        # plotting
+        # plt.plot(time, theta)
+        # add double dot theta to graph 
+
     return theta
 
 def main():
     t = 1
     print("Theta at time", t, "seconds:",theta(t))
 
-main()
+# main()
+
+def plotter(t):
+    time_scale = np.linspace(0,t,1)
+    plt.figure(figsize=(t,3))
+    # theta definition
+
+    for second in range(t):
+        print("second:", second, "theta:", theta(second))
+        plt.plot(second, theta(second), label='Theta')
+    plt.xlabel('Time')
+    plt.ylabel('Theta')
+    plt.title('Theta changes over time')
+    plt.grid(True)
+    plt.show()
+
+# number passed into plotter is experiment duration in seconds 
+plotter(10)
