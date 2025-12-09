@@ -44,6 +44,10 @@ plt.show()
 # 
 # ERROR HERE ABOVE
 
+# MORE NOTES:
+# to resolve the spectrum version issue and try to read the data from the fits file correctly
+# https://specutils.readthedocs.io/en/stable/spectrum.html
+
 
 # plot data
 
