@@ -2,6 +2,7 @@
 # Ceres Spectra Analysis using SpecUtils
 
 from astropy.io import fits
+import astropy
 from astropy import units as u
 # from specutils import Spectrum1D
 from specutils import Spectrum
@@ -13,20 +14,47 @@ import numpy as np
 quantity_support() 
 
 # tester
-flux = np.random.randn(200)*u.Jy
-wavelength = np.arange(5100, 5300)*u.AA
+# flux = np.random.randn(200)*u.Jy
+# wavelength = np.arange(5100, 5300)*u.AA
+# spec1d = Spectrum(spectral_axis=wavelength, flux=flux)
+# ax = plt.subplots()[1]
+# ax.plot(spec1d.spectral_axis, spec1d.flux)
+# ax.set_xlabel("Dispersion")
+# ax.set_ylabel("Flux")
+# plt.show()
+
+# file = fits.open('./ceres.fits')
+# file.info()
+# print('\nsize:',file.size())
+# header = file[0].header
+# print('\n',header[0:5])
+# # print(header[0:10])
+
+# hdul = fits.open('./ceres.fits')
+# fits_image_filename = fits.util.get_testdata_filepath('./ceres.fits')
+with fits.open('./ceres.fits') as hdul:
+    hdul.info()
+    hdul.info()
+    hdul.verify('fix')
+    # data = np.array(hdul[0].data)
+    data = hdul[0].data
+    print('\ndata;',data)
+# auto closes because of the 'with' convention
+
+from specutils import Spectrum
+# 
+# ValueError: Spectral axis must be strictly increasing or decreasing.
+wavelength = astropy.coordinates.SpectralQuantity(data, unit=u.AA)
+print('\nwave:',wavelength)
+
+flux = np.random.randn(313237)*u.Jy  #313237 is array size
+# wavelength = data  #this needs to be converted to the quantity. spectralAxis data type
 spec1d = Spectrum(spectral_axis=wavelength, flux=flux)
 ax = plt.subplots()[1]
 ax.plot(spec1d.spectral_axis, spec1d.flux)
 ax.set_xlabel("Dispersion")
 ax.set_ylabel("Flux")
 plt.show()
-
-# file = fits.open('./ceres.fits')
-# file.info()
-# header = file[0].header
-# print(header[:5])
-# print(header[0:10])
 
 
 # represent the spectra data provided by the FITS file
