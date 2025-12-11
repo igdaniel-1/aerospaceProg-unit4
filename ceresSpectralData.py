@@ -16,15 +16,25 @@ header = file[0].header
 print(header[:5])
 
 print("\nnaxis:",header["NAXIS1"])  # this is the data size 
-print("\nRADESYSa:",header["RADESYSa"])
+# print("\nRADESYSa:",header["RADESYSa"])
+
+
+# try 3
 
 flux = np.random.randn(200) * u.Jy
 wavelength = np.arange(5100, 5300) * u.AA
-spec1d = Spectrum1D(spectral_axis=wavelength, flux=flux)
-ax = plt.subplots()[1]
-ax.plot(spec1d.spectral_axis, spec1d.flux)
-ax.set_xlabel("Dispersion")
-ax.set_ylabel("Flux")
+spectra = Spectrum1D(spectral_axis=wavelength, flux=flux)
+
+with quantity_support():
+    fig, ax = plt.subplots()
+    plt.title("1D Spectra Visualization of Ceres")
+    ax.step(spectra.spectral_axis, spectra.flux)
+
+
+# ax = plt.subplots()[1]
+# ax.plot(spec1d.spectral_axis, spec1d.flux)
+# ax.set_xlabel("Dispersion")
+# ax.set_ylabel("Flux")
 plt.show()
 
 
