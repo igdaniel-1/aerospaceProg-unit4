@@ -10,8 +10,6 @@ import earthpy.plot as ep
 import matplotlib as plt
 
 # Importing Band TIFF Data
-# only one file is in the folder ATM
-# need to download and add the other TIFF files
 np.seterr(divide='ignore', invalid='ignore')
 bands = glob("./satellite-bands/*B?*.tiff")
 bands.sort()
@@ -21,7 +19,9 @@ for band in bands:
     with rio.open(band, 'r') as file:
         data.append(file.read(1))
 stack_data = np.stack(data)
-ep.plot_bands(stack_data, cmap = 'gist_earth', figsize = (20, 12), cols = 6, cbar = False)
+
+# this is a visualizer of all the different bands
+# ep.plot_bands(stack_data, cmap = 'gist_earth', figsize = (20, 12), cols = 6, cbar = False)
 # plt.show()
 
 # stack the rgb data
