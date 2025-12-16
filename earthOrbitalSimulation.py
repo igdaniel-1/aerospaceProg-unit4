@@ -26,8 +26,8 @@ G = 6.67430e-11  # may have to store diff for sci notation
 # Define the Mass of Earth to be 5.972e24
 M = 5.972e24
 # state_vectors
-# Initial position at (1, 0) and velocity (0, 1)
-state_vectors = [1.0, 0.0, 0.0, 1.0]  
+# Initial position at (0, altitude) and velocity (velocity, 0)
+state_vectors = [0, altitude, velocity, 0]  
 # placeholder value for now: Define time points for integration
 t = np.linspace(0, 10, 1000)
 
@@ -36,7 +36,7 @@ t = np.linspace(0, 10, 1000)
 solution = odeint(orbit_equations_de, state_vectors, t, args=(G, M))
 
 # Visualize the simulation using matplotlib
-plt.figure(figsize=(5,5)) #random size to be changed later
+plt.figure(figsize=(8,8))
 # all values in x and y
 plt.plot(solution[:,0], solution[:,1])
 plt.xlabel('X')
