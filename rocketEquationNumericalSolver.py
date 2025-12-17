@@ -18,33 +18,30 @@ delta_m = 0.1  # Mass flow rate (kg/s)
 t_span = (0, 10)
 
 # arguments: initial mass, final mass
-def rocket_equation(t_span, v_e):   
+def rocket_equation(t_span, v):   
     # m(t) = m_0 - delta_m*t
     m_f = m_initial - delta_m*t_span
 
-    deltaVelocity = v_e * np.emath.log(m_initial/m_f)  
+    deltaVelocity = v_e * np.log(m_initial/m_f)  
     return deltaVelocity
 
 
-# t_eval = np.linspace(0, 10, 1000)
 v_0 = 0
 state0 = [v_0]
 # FORMAT: solution = solve_ivp(functionName, time_span, state0, t_eval=np.linspace(0,100,1000))
-solution = solve_ivp(rocket_equation, t_span, [0], dense_output=True)
-# solution = solve_ivp(rocket_equation, t_span, state0, )
+solution = solve_ivp(rocket_equation, t_span, state0, dense_output=True)
 t_eval = np.linspace(0, 10, 1000)
 velocity = solution.sol(t_eval)
-# print('\nvelocity:',velocity)
 
 # plotting
 plt.figure(figsize=(10, 6))
 # plots t_eval and velocity[0]
-plt.plot(t_eval, velocity[0])
+plt.plot(t_eval, velocity[0], label='Rocket Velocity')
 
 # labels
 plt.xlabel('Time')
 plt.ylabel('Velocity')
 plt.title('Rocket Equation')
 plt.grid(True)
-plt.axis('equal')
+plt.legend()
 plt.show()
