@@ -1,18 +1,13 @@
 # Information for compiling
-Some of these files have dependencies that require installation before compilation.
+Some of these files have dependencies that require installation before compilation. Dependencies vary by file, but within this repo include: astropy, matplotlib, scipy, specutils, glob2, rasterio, earthpy.
 
-I created these files to be run in a virtual environment to get around the pip3 "externally-managed-environment" error.
-You can run them the same way I did by following the below steps.
 
-Current additional dependencies vary by file, but within this repo include: astropy, matplotlib, scipy, specutils, glob2, rasterio, earthpy.
+These files were designed to be run in a virtual environment to get around the pip3 "externally-managed-environment" error.
+There are two exceptions to the following instructions. One for the LaPlace files and one for the satellitle imagery files. Additional instructions for specialized files are below General Install Instructions.
 
-For the LaPlace files, the code must be run with version >= Python3.10, < Python14.0.
-Additional build instructions are below, under "LaPlace Build Instructions."
 
-For the satelliteImageryVisualizer.py file, I ran into issues with dependencies in my virtual environment. I used the "myVirtualEnv" environment as opposed to the "VEversion10" version. I installed additional dependencies including: setuptools.
-Error: The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-Note to self and maybe you: this package install may need to be updated soon given the package's slated removal, be advised.
 
+# General Install Instructions 
 
 1. Set up the virtual environment. Within your project directory, open terminal and enter:
 
@@ -36,7 +31,17 @@ Note to self and maybe you: this package install may need to be updated soon giv
 
 6. To restart the environment, repeat step 2 within your project directory.
 
-# Information for compiling LaPlace Files
+## Specialized Install Information
+
+For the LaPlace files, the code must be run with version >= Python3.10, < Python14.0.
+Additional build instructions are below, under "LaPlace Build Instructions."
+
+
+For the satelliteImageryVisualizer.py file, I ran into issues with dependencies in my virtual environment. I used the "myVirtualEnv" environment as opposed to the "VEversion10" version. I installed additional dependencies including: setuptools.
+Error: The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+Note to self and maybe you: this package install may need to be updated soon given the package's slated removal, be advised.
+
+## Information for compiling LaPlace Files
 1. Set up the virtual environment. Within your project directory, open terminal and enter:
 For the LaPlace files, the code must be run with version >= Python3.10, < Python14.0.
 Create another VE with the following command:

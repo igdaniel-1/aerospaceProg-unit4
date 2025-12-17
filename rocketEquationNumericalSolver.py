@@ -17,7 +17,6 @@ delta_m = 0.1  # Mass flow rate (kg/s)
 # Define time range for integration
 t_span = (0, 10)
 
-# arguments: initial mass, final mass
 def rocket_equation(t_span, v):   
     # m(t) = m_0 - delta_m*t
     m_f = m_initial - delta_m*t_span
